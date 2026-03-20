@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .glass {
+    @apply bg-black/40 backdrop-blur-lg border border-white/10;
+  }
+}
+
+body {
+  background-color: #050505;
+  color: #fafafa;
+}
