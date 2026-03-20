@@ -15,12 +15,16 @@ const About = () => {
         </div>
 
         <div className="md:w-1/2 flex justify-center">
-          <div className="relative w-72 h-80 rounded-2xl overflow-hidden glass p-2 shadow-2xl group">
-            <div className="absolute inset-0 bg-[#4f3cdc]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"></div>
+          {/* เพิ่ม group และบรรทัด hover:scale-[1.02] เพื่อให้ตัวกรอบขยับนิดๆ หรือไม่ใส่ก็ได้ครับ */}
+          <div className="relative w-72 h-80 rounded-2xl overflow-hidden glass p-2 shadow-2xl group transition-transform duration-500">
+
+            {/* ลบตัว Overlay สีม่วงทิ้งไปแล้ว */}
+
+            {/* เพิ่ม transition-transform duration-500 และ group-hover:scale-110 */}
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              src="https://static.thairath.co.th/media/B6FtNKtgSqRqbnNsbSFsFFh2P8F4Qvjl5avopBgNsFWzLW4ZyfnE9QnrPPnwEwSlUXPhN.jpg"
               alt="Kittiwin Intanil Portrait"
-              className="w-full h-full object-cover rounded-xl filter grayscale contrast-125 object-top"
+              className="w-full h-full object-cover rounded-xl object-top transition-transform duration-500 group-hover:scale-110"
             />
           </div>
         </div>
