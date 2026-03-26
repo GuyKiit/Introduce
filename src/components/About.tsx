@@ -18,8 +18,6 @@ const About = () => {
           {/* เพิ่ม group และบรรทัด hover:scale-[1.02] เพื่อให้ตัวกรอบขยับนิดๆ หรือไม่ใส่ก็ได้ครับ */}
           <div className="relative w-72 h-80 rounded-2xl overflow-hidden glass p-2 shadow-2xl group transition-transform duration-500">
 
-            {/* ลบตัว Overlay สีม่วงทิ้งไปแล้ว */}
-
             {/* เพิ่ม transition-transform duration-500 และ group-hover:scale-110 */}
             <img
               src="https://static.thairath.co.th/media/B6FtNKtgSqRqbnNsbSFsFFh2P8F4Qvjl5avopBgNsFWzLW4ZyfnE9QnrPPnwEwSlUXPhN.jpg"

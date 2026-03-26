@@ -27,14 +27,14 @@ const Navbar = () => {
               Kittiwin.dev
             </h1>
           </div>
-          
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
               <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">About</a>
               <a href="#skills" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Skills</a>
               <a href="#experience" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Experience</a>
               <a href="#projects" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Projects</a>
-              <button 
+              <button
                 onClick={toggleTheme}
                 className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5"
                 title="Toggle Dark Mode"
@@ -46,9 +46,9 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          
+
           <div className="md:hidden flex items-center gap-2">
-            <button 
+            <button
               onClick={toggleTheme}
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-2"
             >

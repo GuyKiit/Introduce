@@ -11,9 +11,9 @@ const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-            Building the next-gen <br />
+            Junior by title, <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#816bf8] via-[#4f3cdc] to-[#25187e]">
-              digital experience.
+              Senior by curiosity
             </span>
           </h1>
 
