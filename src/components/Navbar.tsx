@@ -18,6 +18,19 @@ const Navbar = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const target = document.getElementById(id);
+    if (target) {
+      const offset = 80; // navbar height
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+      // Update URL hash without causing a page jump
+      window.history.pushState(null, '', `#${id}`);
+    }
+  };
+
   return (
     <nav className="fixed w-full z-50 glass border-b border-gray-200 dark:border-white/5 top-0 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,10 +43,10 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">About</a>
-              <a href="#skills" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Skills</a>
-              <a href="#experience" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Experience</a>
-              <a href="#projects" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Projects</a>
+              <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">About</a>
+              <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Skills</a>
+              <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Experience</a>
+              <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">Projects</a>
               <button
                 onClick={toggleTheme}
                 className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5"
@@ -68,10 +81,10 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden glass border-t border-gray-200 dark:border-white/5 absolute w-full transition-colors duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">About</a>
-            <a href="#skills" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">Skills</a>
-            <a href="#experience" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">Experience</a>
-            <a href="#projects" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">Projects</a>
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">About</a>
+            <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">Skills</a>
+            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">Experience</a>
+            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">Projects</a>
           </div>
         </div>
       )}

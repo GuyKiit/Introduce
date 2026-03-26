@@ -26,10 +26,15 @@ const Hero = () => {
               View Projects
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="glass hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center">
-              <Download className="mr-2 w-4 h-4" />
-              Download CV
-            </button>
+            <a
+              href="/Introduce/cv.pdf"
+              download="Kittiwin_Intanil_CV.pdf"
+            >
+              <button className="glass hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center">
+                <Download className="mr-2 w-4 h-4" />
+                Download CV
+              </button>
+            </a>
           </div>
         </div>
 
