@@ -11,14 +11,14 @@ const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-            Junior by title, <br />
+            New to the field, <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#816bf8] via-[#4f3cdc] to-[#25187e]">
-              Senior by curiosity
+              not to the craft
             </span>
           </h1>
 
           <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed">
-            I'm Kittiwin Intanil, a Software Developer crafting scalable applications and elegant interfaces with modern web technologies.
+            Hey, I'm Kittiwin — a Software Developer who loves building things that just work, from clean interfaces to solid back-end logic.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -39,30 +39,79 @@ const Hero = () => {
         </div>
 
         <div className="hidden lg:block w-full max-w-md relative">
-          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#4f3cdc] to-purple-600 opacity-20 blur-2xl"></div>
-          <div className="relative rounded-2xl glass p-6 shadow-2xl">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+          {/* Glow */}
+          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#4f3cdc] to-purple-600 opacity-20 blur-2xl" />
+
+          {/* Editor Window */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+
+            {/* Title Bar */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-gray-100/80 dark:bg-[#1e1e1e]/90 backdrop-blur-sm border-b border-gray-200 dark:border-white/5">
+              <div className="w-3 h-3 rounded-full bg-red-500/80" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+              <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              <div className="ml-3 flex items-center gap-1">
+                <span className="text-xs px-3 py-0.5 rounded-t bg-white dark:bg-[#252526] text-gray-700 dark:text-gray-300 border-t border-x border-gray-200 dark:border-white/10 font-mono">
+                  developer.ts
+                </span>
+              </div>
             </div>
-            <pre className="text-sm font-mono text-gray-700 dark:text-gray-300 overflow-x-auto">
-              <code>
-                <span className="text-pink-400">const</span> developer = {'{'}
-                <br />
-                {'  '}name: <span className="text-green-400">'Kittiwin Intanil'</span>,
-                <br />
-                {'  '}role: <span className="text-green-400">'Software Developer'</span>,
-                <br />
-                {'  '}skills: [<span className="text-green-400">'React'</span>, <span className="text-green-400">'.NET 8'</span>, <span className="text-green-400">'SQL'</span>],
-                <br />
-                {'  '}passionate: <span className="text-orange-400">true</span>
-                <br />
-                {'}'};
-                <br /><br />
-                developer.<span className="text-blue-400">solveProblem</span>();
-              </code>
-            </pre>
+
+            {/* Code Body */}
+            <div className="bg-white/70 dark:bg-[#1e1e1e]/80 backdrop-blur-sm px-4 py-5">
+              <table className="text-sm font-mono w-full border-collapse">
+                <tbody>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">1</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-pink-400">const</span> <span className="text-sky-300">developer</span> <span className="text-gray-400"> =</span> {'{'}</td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">2</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'  '}</span><span className="text-[#9cdcfe]">name</span><span className="text-gray-400">:</span> <span className="text-[#ce9178]">'Kittiwin Intanil'</span><span className="text-gray-400">,</span></td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">3</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'  '}</span><span className="text-[#9cdcfe]">role</span><span className="text-gray-400">:</span> <span className="text-[#ce9178]">'Software Developer'</span><span className="text-gray-400">,</span></td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">4</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'  '}</span><span className="text-[#9cdcfe]">skills</span><span className="text-gray-400">: [</span></td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">5</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'    '}</span><span className="text-[#ce9178]">'React'</span><span className="text-gray-400">, </span><span className="text-[#ce9178]">'.NET 8'</span><span className="text-gray-400">, </span><span className="text-[#ce9178]">'SQL'</span><span className="text-gray-400">,</span></td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">6</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'    '}</span><span className="text-[#ce9178]">'AI-Assisted Dev'</span></td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">7</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'  '}],</span></td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">8</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'  '}</span><span className="text-[#9cdcfe]">passionate</span><span className="text-gray-400">:</span> <span className="text-[#569cd6]">true</span></td>
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">9</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-400">{'}'}</span><span className="text-gray-400">;</span></td>
+                  </tr>
+                  <tr className="leading-6">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">10</td>
+                    <td />
+                  </tr>
+                  <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">11</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-sky-300">developer</span><span className="text-gray-400">.</span><span className="text-[#dcdcaa]">solveProblem</span><span className="text-gray-400">();</span></td>
+                  </tr>
+                  <tr className="leading-6">
+                    <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">12</td>
+                    <td><span className="inline-block w-2 h-4 bg-[#a89eff] align-middle animate-pulse rounded-sm" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

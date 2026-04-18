@@ -18,7 +18,7 @@ const Projects = () => {
     <section id="projects" className="py-24 border-t border-gray-200 dark:border-white/5">
       <div className="flex justify-between items-end mb-12">
         <div>
-          <h2 className="text-3xl font-bold mb-2">Featured Works</h2>
+          <h2 className="text-3xl font-bold mb-2">Projects</h2>
           <p className="text-gray-600 dark:text-gray-400">Selected projects demonstrating my technical philosophy.</p>
         </div>
         <a href="https://github.com/GuyKiit"

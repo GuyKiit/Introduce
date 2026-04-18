@@ -1,15 +1,17 @@
+import guyImage from '../assets/guy1.jpg';
+
 const About = () => {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="py-24 border-t border-gray-200 dark:border-white/5">
       <div className="flex flex-col md:flex-row items-center gap-16">
         <div className="md:w-1/2">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">The Intent Behind the Code</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">The Story So Far</h2>
           <div className="space-y-6 text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
             <p>
-              My journey started with a fascination for how bits and bytes could create meaningful human experiences. I don't just write functions, I architect digital solutions with a focus on precision, scalability, and user intent.
+              It all began with one question: &ldquo;Wait, how does this thing actually work?&rdquo; — and the rabbit hole never ended.
             </p>
             <p>
-              As a recent graduate, I've spent thousands of hours refining my craft in the React ecosystem, finding beauty in the logic of state management and the efficiency of cloud-native deployments.
+              I'm a recent grad who's put in a lot of hours (and a lot of Stack Overflow tabs) learning the React ecosystem. I enjoy the messy, satisfying process of turning a rough idea into something real and well-built — even if it means debugging at midnight.
             </p>
           </div>
         </div>
@@ -20,9 +22,11 @@ const About = () => {
 
             {/* เพิ่ม transition-transform duration-500 และ group-hover:scale-110 */}
             <img
-              src="https://static.thairath.co.th/media/B6FtNKtgSqRqbnNsbSFsFFh2P8F4Qvjl5avopBgNsFWzLW4ZyfnE9QnrPPnwEwSlUXPhN.jpg"
-              alt="Kittiwin Intanil Portrait"
-              className="w-full h-full object-cover rounded-xl object-top transition-transform duration-500 group-hover:scale-110"
+              // src="https://static.thairath.co.th/media/B6FtNKtgSqRqbnNsbSFsFFh2P8F4Qvjl5avopBgNsFWzLW4ZyfnE9QnrPPnwEwSlUXPhN.jpg"
+              src={guyImage}
+
+              alt="Kittiwin Intanil"
+              className="w-full h-full object-cover rounded-xl object-center transition-transform duration-500 group-hover:scale-110"
             />
           </div>
         </div>
