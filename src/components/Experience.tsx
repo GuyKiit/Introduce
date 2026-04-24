@@ -7,7 +7,7 @@ const Experience = () => {
         <div className="md:w-3/4 relative border-l border-gray-200 dark:border-white/10 pl-8 pb-8">
           <div className="absolute w-3 h-3 bg-[#5a4fcf] rounded-full -left-[6.5px] top-2 shadow-[0_0_10px_#5a4fcf]"></div>
 
-          <div className="mb-2 text-sm text-[#a89eff] tracking-wider font-semibold">16 JUNE 2025 — 27 MARCH 2026</div>
+          <div className="mb-2 text-sm text-[#a89eff] tracking-wider font-semibold">16 JUNE 2025 — 27 MARCH 2026 (9 Months) </div>
           <h3 className="text-2xl font-bold mb-1">Software Developer Intern</h3>
           <h4 className="text-lg text-gray-600 dark:text-gray-400 mb-6">บริษัท ไทยรุ่งเรือง เทคโนโลยี จำกัด</h4>
 

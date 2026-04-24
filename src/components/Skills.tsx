@@ -32,7 +32,7 @@ const aiSkill = {
   title: 'AI-Assisted Development',
   description:
     'Leveraging AI tools for prompt engineering, code generation, and debugging — using them as a productivity multiplier while maintaining full ownership of design and code quality.',
-  tags: ['Prompt Engineering', 'Gemini', 'Claude']
+  tags: ['Gemini', 'Claude', 'OpenClaw']
 };
 
 const Skills = () => {

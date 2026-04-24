@@ -1,8 +1,47 @@
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, Loader2 } from 'lucide-react';
+import { useRef, useState } from 'react';
+import html2pdf from 'html2pdf.js';
+import CvDocument from './CvDocument';
 
 const Hero = () => {
+  const cvRef = useRef<HTMLDivElement>(null);
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleDownloadCV = async () => {
+    if (!cvRef.current || isExporting) return;
+    setIsExporting(true);
+    try {
+      const options = {
+        margin: 0,
+        filename: 'Kittiwin_Intanil_CV.pdf',
+        image: { type: 'jpeg' as const, quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: '#ffffff',
+          // html2canvas ไม่รองรับ oklch() ที่ Tailwind v4 ใช้
+          // ลบ stylesheet ทั้งหมดออกก่อน capture (CvDocument ใช้ inline styles อยู่แล้ว)
+          onclone: (_clonedDoc: Document, element: HTMLElement) => {
+            const doc = element.ownerDocument;
+            doc.querySelectorAll('link[rel="stylesheet"], style').forEach(el => el.remove());
+          },
+        },
+        jsPDF: { unit: 'px' as const, format: [794, 1123] as [number, number], orientation: 'portrait' as const },
+      };
+      await html2pdf().set(options).from(cvRef.current).save();
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   return (
     <section className="pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center flex-grow min-h-screen">
+      {/* Hidden CV document — captured by html2pdf, never visible to the user */}
+      <div style={{ position: 'absolute', left: '-9999px', top: 0, pointerEvents: 'none' }}>
+        <CvDocument ref={cvRef} />
+      </div>
+
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 w-full">
         <div className="flex flex-col items-start max-w-2xl">
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 text-xs text-gray-600 dark:text-gray-300 mb-6 backdrop-blur-sm">
@@ -26,15 +65,18 @@ const Hero = () => {
               View Projects
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a
-              href="/Introduce/cv.pdf"
-              download="Kittiwin_Intanil_CV.pdf"
+            <button
+              onClick={handleDownloadCV}
+              disabled={isExporting}
+              className="glass hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              <button className="glass hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center">
+              {isExporting ? (
+                <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+              ) : (
                 <Download className="mr-2 w-4 h-4" />
-                Download CV
-              </button>
-            </a>
+              )}
+              {isExporting ? 'Generating…' : 'Download CV'}
+            </button>
           </div>
         </div>
 
@@ -83,7 +125,7 @@ const Hero = () => {
                   </tr>
                   <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
                     <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">6</td>
-                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'    '}</span><span className="text-[#ce9178]">'AI-Assisted Dev'</span></td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-gray-500">{'    '}</span><span className="text-[#ce9178]">'AI-Assisted'</span></td>
                   </tr>
                   <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
                     <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">7</td>
