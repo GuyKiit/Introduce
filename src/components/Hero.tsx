@@ -2,10 +2,14 @@ import { ArrowRight, Download, Loader2 } from 'lucide-react';
 import { useRef, useState } from 'react';
 import html2pdf from 'html2pdf.js';
 import CvDocument from './CvDocument';
+import { useLang } from '../i18n/LanguageContext';
+import { translations, t } from '../i18n/translations';
 
 const Hero = () => {
   const cvRef = useRef<HTMLDivElement>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const { lang } = useLang();
+  const hero = translations.hero;
 
   const handleDownloadCV = async () => {
     if (!cvRef.current || isExporting) return;
@@ -46,23 +50,23 @@ const Hero = () => {
         <div className="flex flex-col items-start max-w-2xl">
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 text-xs text-gray-600 dark:text-gray-300 mb-6 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-            Available for new opportunities
+            {t(hero.badge, lang)}
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-            New to the field, <br />
+            {t(hero.headingLine1, lang)} <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#816bf8] via-[#4f3cdc] to-[#25187e]">
-              not to the craft
+              {t(hero.headingLine2, lang)}
             </span>
           </h1>
 
           <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed">
-            Hey, I'm Kittiwin — a Software Developer who loves building things that just work, from clean interfaces to solid back-end logic.
+            {t(hero.description, lang)}
           </p>
 
-          <div className="flex flex-wrap items-center gap-4">
+          {/* <div className="flex flex-wrap items-center gap-4">
             <button className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-6 py-3 rounded-full font-medium transition-colors flex items-center group">
-              View Projects
+              {t(hero.viewProjects, lang)}
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
@@ -75,9 +79,9 @@ const Hero = () => {
               ) : (
                 <Download className="mr-2 w-4 h-4" />
               )}
-              {isExporting ? 'Generating…' : 'Download CV'}
+              {isExporting ? t(hero.generating, lang) : t(hero.downloadCV, lang)}
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="hidden lg:block w-full max-w-md relative">
@@ -105,7 +109,7 @@ const Hero = () => {
                 <tbody>
                   <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
                     <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">1</td>
-                    <td className="text-gray-800 dark:text-gray-200"><span className="text-pink-400">const</span> <span className="text-sky-300">developer</span> <span className="text-gray-400"> =</span> {'{'}</td>
+                    <td className="text-gray-800 dark:text-gray-200"><span className="text-pink-400">const</span> <span className="text-sky-300">developer</span> <span className="text-gray-400">=</span> {'{'}</td>
                   </tr>
                   <tr className="leading-6 hover:bg-[#4f3cdc]/5 transition-colors">
                     <td className="select-none text-right pr-4 text-gray-300 dark:text-gray-600 w-6 text-xs">2</td>

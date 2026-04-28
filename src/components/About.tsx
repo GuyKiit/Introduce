@@ -1,17 +1,22 @@
 import guyImage from '../assets/guy1.jpg';
+import { useLang } from '../i18n/LanguageContext';
+import { translations, t } from '../i18n/translations';
 
 const About = () => {
+  const { lang } = useLang();
+  const about = translations.about;
+
   return (
     <section id="about" className="py-24 border-t border-gray-200 dark:border-white/5">
       <div className="flex flex-col md:flex-row items-center gap-16">
         <div className="md:w-1/2">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">The Story So Far</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">{t(about.title, lang)}</h2>
           <div className="space-y-6 text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
             <p>
-              It all began with one question: &ldquo;Wait, how does this thing actually work?&rdquo; — and the rabbit hole never ended.
+              {t(about.paragraph1, lang)}
             </p>
             <p>
-              I'm a recent grad who's put in a lot of hours (and a lot of Stack Overflow tabs) learning the React ecosystem. I enjoy the messy, satisfying process of turning a rough idea into something real and well-built — even if it means debugging at midnight.
+              {t(about.paragraph2, lang)}
             </p>
           </div>
         </div>

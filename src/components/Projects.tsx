@@ -3,10 +3,14 @@ import group1Image from '../assets/Group 1.png';
 import scImage from '../assets/SC.png';
 import closeImage from '../assets/CLOSE.png';
 import email from '../assets/email.png';
+import { useLang } from '../i18n/LanguageContext';
+import { translations, t } from '../i18n/translations';
+import type { Language } from '../i18n/translations';
 
 type Project = {
   title: string;
-  description: string;
+  descriptionEn: string;
+  descriptionTh: string;
   images: string[];
   tags: string[];
 };
@@ -14,13 +18,14 @@ type Project = {
 const projects: Project[] = [
   {
     title: 'Corrective Action System (CAS)',
-    description: 'Developed a comprehensive End-to-End Corrective Action System (CAS) featuring 4-tier Role-Based Access Control (RBAC), automated real-time notifications, and hierarchical approval workflows to streamline incident reporting and resolution.',
+    descriptionEn: translations.projects.cas.description.en,
+    descriptionTh: translations.projects.cas.description.th,
     images: [group1Image, scImage, closeImage, email],
     tags: ['React', '.NET 8', 'SQL Server']
   },
 ];
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({ project, lang }: { project: Project; lang: Language }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -61,7 +66,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
         <h3 className="text-2xl font-bold mb-3 group-hover:text-[#a89eff] transition-colors">{project.title}</h3>
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
-          {project.description}
+          {lang === 'en' ? project.descriptionEn : project.descriptionTh}
         </p>
       </div>
     </div>
@@ -69,31 +74,34 @@ const ProjectCard = ({ project }: { project: Project }) => {
 };
 
 const Projects = () => {
+  const { lang } = useLang();
+  const proj = translations.projects;
+
   return (
     <section id="projects" className="py-24 border-t border-gray-200 dark:border-white/5">
       <div className="flex justify-between items-end mb-12">
         <div>
-          <h2 className="text-3xl font-bold mb-2">Projects</h2>
-          <p className="text-gray-600 dark:text-gray-400">Selected projects demonstrating my technical philosophy.</p>
+          <h2 className="text-3xl font-bold mb-2">{t(proj.title, lang)}</h2>
+          <p className="text-gray-600 dark:text-gray-400">{t(proj.subtitle, lang)}</p>
         </div>
         <a href="https://github.com/GuyKiit"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-flex items-center text-[#a89eff] hover:text-[#c4bcff] transition-colors">
-          View GitHub
+          {t(proj.viewGitHub, lang)}
           <span className="ml-2">→</span>
         </a>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+          <ProjectCard key={index} project={project} lang={lang} />
         ))}
       </div>
 
       <div className="mt-8 text-center md:hidden">
         <button className="text-[#a89eff] hover:text-gray-900 dark:hover:text-white transition-colors border border-[#a89eff]/30 rounded-full px-6 py-2">
-          View All on GitHub
+          {t(proj.viewAllGitHub, lang)}
         </button>
       </div>
     </section>

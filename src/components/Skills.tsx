@@ -1,47 +1,51 @@
 import { Bot, Code2, Database, LayoutTemplate, Server } from 'lucide-react';
-
-const mainSkills = [
-  {
-    icon: <Code2 className="w-6 h-6 text-[#a89eff]" />,
-    title: 'Frontend Development',
-    description: 'Building responsive, interactive UIs using React, TypeScript, and modern CSS frameworks like Tailwind.',
-    tags: ['React', 'TypeScript', 'Tailwind CSS']
-  },
-  {
-    icon: <Server className="w-6 h-6 text-[#a89eff]" />,
-    title: 'Backend Development',
-    description: 'Architecting robust APIs and services utilizing .NET Core, focusing on microservices and scalability.',
-    tags: ['.NET 8', 'C#', 'REST API']
-  },
-  {
-    icon: <Database className="w-6 h-6 text-[#a89eff]" />,
-    title: 'Database Management',
-    description: 'Designing efficient schemas and optimizing complex queries in MS SQL Server to ensure data integrity.',
-    tags: ['MS SQL Server', 'Query Optimization']
-  },
-  {
-    icon: <LayoutTemplate className="w-6 h-6 text-[#a89eff]" />,
-    title: 'UI/UX Implementation',
-    description: 'Translating Figma designs into pixel-perfect, accessible components using tools like Material-UI.',
-    tags: ['Figma', 'Material-UI', 'Accessibility']
-  }
-];
-
-const aiSkill = {
-  icon: <Bot className="w-6 h-6 text-[#a89eff]" />,
-  title: 'AI-Assisted Development',
-  description:
-    'Leveraging AI tools for prompt engineering, code generation, and debugging — using them as a productivity multiplier while maintaining full ownership of design and code quality.',
-  tags: ['Gemini', 'Claude', 'OpenClaw']
-};
+import { useLang } from '../i18n/LanguageContext';
+import { translations, t } from '../i18n/translations';
 
 const Skills = () => {
+  const { lang } = useLang();
+  const sk = translations.skills;
+
+  const mainSkills = [
+    {
+      icon: <Code2 className="w-6 h-6 text-[#a89eff]" />,
+      title: t(sk.frontend.title, lang),
+      description: t(sk.frontend.description, lang),
+      tags: ['React', 'TypeScript', 'Tailwind CSS']
+    },
+    {
+      icon: <Server className="w-6 h-6 text-[#a89eff]" />,
+      title: t(sk.backend.title, lang),
+      description: t(sk.backend.description, lang),
+      tags: ['.NET 8', 'C#', 'REST API']
+    },
+    {
+      icon: <Database className="w-6 h-6 text-[#a89eff]" />,
+      title: t(sk.database.title, lang),
+      description: t(sk.database.description, lang),
+      tags: ['MS SQL Server', 'Query Optimization']
+    },
+    {
+      icon: <LayoutTemplate className="w-6 h-6 text-[#a89eff]" />,
+      title: t(sk.uiux.title, lang),
+      description: t(sk.uiux.description, lang),
+      tags: ['Figma', 'Material-UI', 'Accessibility']
+    }
+  ];
+
+  const aiSkill = {
+    icon: <Bot className="w-6 h-6 text-[#a89eff]" />,
+    title: t(sk.ai.title, lang),
+    description: t(sk.ai.description, lang),
+    tags: ['Gemini', 'Claude', 'OpenClaw']
+  };
+
   return (
     <section id="skills" className="py-24 border-t border-gray-200 dark:border-white/5">
       {/* Section Header */}
       <div className="mb-12">
-        <h2 className="text-3xl font-bold mb-3">What I Work With</h2>
-        <p className="text-gray-500 dark:text-gray-400">The stack and tools I reach for when building things.</p>
+        <h2 className="text-3xl font-bold mb-3">{t(sk.title, lang)}</h2>
+        <p className="text-gray-500 dark:text-gray-400">{t(sk.subtitle, lang)}</p>
       </div>
 
       {/* Main Skills Grid */}
@@ -91,7 +95,7 @@ const Skills = () => {
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <h3 className="text-xl font-semibold">{aiSkill.title}</h3>
               <span className="text-xs px-2 py-0.5 rounded-full bg-[#a89eff]/10 border border-[#a89eff]/30 text-[#a89eff]">
-                Modern Workflow
+                {t(sk.modernWorkflow, lang)}
               </span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
