@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import group1Image from '../assets/Group 1.png';
 import scImage from '../assets/SC.png';
 import closeImage from '../assets/CLOSE.png';
@@ -21,7 +21,7 @@ const projects: Project[] = [
     descriptionEn: translations.projects.cas.description.en,
     descriptionTh: translations.projects.cas.description.th,
     images: [group1Image, scImage, closeImage, email],
-    tags: ['React', '.NET 8', 'SQL Server']
+    tags: ['React', '.NET 8', 'SQL Server'],
   },
 ];
 
@@ -29,43 +29,57 @@ const ProjectCard = ({ project, lang }: { project: Project; lang: Language }) =>
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    if (!project.images || project.images.length <= 1) return;
-    const interval = setInterval(() => {
+    if (project.images.length <= 1) return;
+    const interval = window.setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
-    }, 3000); // Change image every 3 seconds
-    return () => clearInterval(interval);
-  }, [project.images]);
+    }, 3200);
+    return () => window.clearInterval(interval);
+  }, [project.images.length]);
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl glass border border-transparent dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all duration-300">
-      <div className="h-64 overflow-hidden relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0a0a0a] via-transparent to-transparent z-10"></div>
-        <div className="absolute inset-0 bg-white/10 dark:bg-[#4f3cdc]/10 group-hover:bg-transparent dark:group-hover:bg-[#4f3cdc]/0 transition-all duration-500 z-10"></div>
-        
+    <div className="group relative overflow-hidden rounded-lg glass border border-gray-200 transition-all duration-300 hover:border-gray-300 dark:border-white/10 dark:hover:border-white/20">
+      <div className="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-black/30">
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-white via-white/20 to-transparent dark:from-[#0a0a0a] dark:via-black/20" />
+        <div className="absolute inset-0 z-10 bg-white/5 transition-all duration-500 group-hover:bg-transparent dark:bg-[#4f3cdc]/10 dark:group-hover:bg-[#4f3cdc]/0" />
+
         {project.images.map((img, idx) => (
           <img
-            key={idx}
+            key={img}
             src={img}
             alt={`${project.title} preview ${idx + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transform transition-all duration-1000 ${
-              idx === currentImageIndex 
-                ? 'opacity-100 group-hover:scale-105' 
-                : 'opacity-0 scale-100'
+            className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${
+              idx === currentImageIndex ? 'opacity-100 group-hover:scale-[1.02]' : 'scale-100 opacity-0'
             }`}
           />
         ))}
+
+        <div className="absolute bottom-4 right-4 z-20 flex gap-1.5">
+          {project.images.map((img, idx) => (
+            <span
+              key={img}
+              className={`h-1.5 rounded-full transition-all ${
+                idx === currentImageIndex ? 'w-5 bg-[#a89eff]' : 'w-1.5 bg-gray-400/60 dark:bg-white/40'
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="p-8 relative z-20 -mt-20">
-        <div className="flex gap-2 mb-4">
-          {project.tags.map((tag, idx) => (
-            <span key={idx} className="px-3 py-1 text-xs rounded-full bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 shadow-lg">
+      <div className="relative z-20 -mt-10 p-6 md:p-8">
+        <div className="mb-4 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-gray-200 bg-white/90 px-3 py-1 text-xs text-gray-700 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-[#0a0a0a]/90 dark:text-gray-300"
+            >
               {tag}
             </span>
           ))}
         </div>
-        <h3 className="text-2xl font-bold mb-3 group-hover:text-[#a89eff] transition-colors">{project.title}</h3>
-        <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+        <h3 className="mb-3 text-2xl font-bold transition-colors group-hover:text-[#a89eff]">
+          {project.title}
+        </h3>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           {lang === 'en' ? project.descriptionEn : project.descriptionTh}
         </p>
       </div>
@@ -79,30 +93,37 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-24 border-t border-gray-200 dark:border-white/5">
-      <div className="flex justify-between items-end mb-12">
-        <div>
-          <h2 className="text-3xl font-bold mb-2">{t(proj.title, lang)}</h2>
+      <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-2xl">
+          <h2 className="mb-2 text-3xl font-bold">{t(proj.title, lang)}</h2>
           <p className="text-gray-600 dark:text-gray-400">{t(proj.subtitle, lang)}</p>
         </div>
-        <a href="https://github.com/GuyKiit"
+        <a
+          href="https://github.com/GuyKiit"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center text-[#a89eff] hover:text-[#c4bcff] transition-colors">
+          className="hidden items-center text-[#a89eff] transition-colors hover:text-[#c4bcff] md:inline-flex"
+        >
           {t(proj.viewGitHub, lang)}
-          <span className="ml-2">→</span>
+          <span className="ml-2">-&gt;</span>
         </a>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} lang={lang} />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {projects.map((project) => (
+          <ProjectCard key={project.title} project={project} lang={lang} />
         ))}
       </div>
 
       <div className="mt-8 text-center md:hidden">
-        <button className="text-[#a89eff] hover:text-gray-900 dark:hover:text-white transition-colors border border-[#a89eff]/30 rounded-full px-6 py-2">
+        <a
+          href="https://github.com/GuyKiit"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex rounded-full border border-[#a89eff]/30 px-6 py-2 text-[#a89eff] transition-colors hover:text-gray-900 dark:hover:text-white"
+        >
           {t(proj.viewAllGitHub, lang)}
-        </button>
+        </a>
       </div>
     </section>
   );

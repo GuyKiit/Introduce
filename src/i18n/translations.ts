@@ -5,9 +5,9 @@ export const translations = {
   navbar: {
     about: { en: 'About', th: 'เกี่ยวกับ' },
     skills: { en: 'Skills', th: 'ทักษะ' },
+    education: { en: 'Education', th: 'การศึกษา' },
     experience: { en: 'Experience', th: 'ประสบการณ์' },
     projects: { en: 'Projects', th: 'ผลงาน' },
-    connect: { en: 'Connect', th: 'ติดต่อ' },
   },
 
   // ─── Hero ───
@@ -22,6 +22,7 @@ export const translations = {
     viewProjects: { en: 'View Projects', th: 'ดูผลงาน' },
     downloadCV: { en: 'Download CV', th: 'ดาวน์โหลด CV' },
     generating: { en: 'Generating…', th: 'กำลังสร้าง…' },
+
   },
 
   // ─── About ───
@@ -34,6 +35,11 @@ export const translations = {
     paragraph2: {
       en: "I'm a recent grad who's put in a lot of hours (and a lot of Stack Overflow tabs) learning the React ecosystem. I enjoy the messy, satisfying process of turning a rough idea into something real and well-built — even if it means debugging at midnight.",
       th: 'ผมเป็นเด็กจบใหม่ที่ทุ่มเวลาหลายชั่วโมง (และเปิด Stack Overflow หลายสิบแท็บ) เพื่อเรียนรู้ React ecosystem ผมชอบกระบวนการที่ยุ่งเหยิงแต่สนุกในการเปลี่ยนไอเดียดิบ ๆ ให้กลายเป็นของจริงที่ดี — แม้จะต้อง debug ตอนเที่ยงคืนก็ตาม',
+    },
+
+    detail2: {
+      label: { en: 'Working style', th: 'สไตล์การทำงาน' },
+      value: { en: 'Learn fast, document clearly, improve iteratively', th: 'เรียนรู้ไว จดรายละเอียดชัด ปรับปรุงเป็นรอบ ๆ' },
     },
   },
 
@@ -83,21 +89,44 @@ export const translations = {
   },
 
   // ─── Experience ───
+  // ─── Education ───
+  education: {
+    title: { en: 'Education', th: 'การศึกษา' },
+    degree: {
+      en: 'B.Eng. — Data Science and Systems Management Engineering (DSS)',
+      th: 'วศ.บ. — วิศวกรรมวิทยาการข้อมูลและระบบการจัดการ (DSS)',
+    },
+    institution: {
+      en: 'Mahanakorn University of Technology',
+      th: 'มหาวิทยาลัยเทคโนโลยีมหานคร',
+    },
+    faculty: {
+      en: 'Faculty of Engineering and Technology',
+      th: 'คณะวิศวกรรมศาสตร์และเทคโนโลยี',
+    },
+    years: { en: '2022 – 2026', th: '2565 – 2569' },
+  },
+
   experience: {
     title: { en: 'Experience', th: 'ประสบการณ์' },
     duration: {
-      en: '16 JUNE 2025 — 27 MARCH 2026 (9 Months)',
-      th: '16 มิ.ย. 2025 — 27 มี.ค. 2026 (9 เดือน)',
+      en: '16 JUNE 2025 — 27 MARCH 2026',
+      th: '16 มิ.ย. 2025 — 27 มี.ค. 2026',
     },
     role: { en: 'Software Developer Intern', th: 'นักพัฒนาซอฟต์แวร์ (ฝึกงาน)' },
+    company: {
+      en: 'Thai Roong Ruang Technology Co., Ltd.',
+      th: 'บริษัท ไทยรุ่งเรือง เทคโนโลยี จำกัด',
+    },
     bullet1: {
-      en: 'Frontend details on: Developed high-performance Single Page Application (SPA) using React ecosystem, red-ux managing states to secure asynchronous state management.',
+      en: 'Developed a high-performance Single Page Application (SPA) with the React ecosystem and Redux for reliable asynchronous state management.',
       th: 'พัฒนา Single Page Application (SPA) ประสิทธิภาพสูงด้วย React ecosystem จัดการ State ด้วย Redux เพื่อให้การจัดการ State แบบ Asynchronous มีความเสถียร',
     },
     bullet2: {
       en: 'Constantly improving team efficiency and usability of APIs to build reliable solutions. Developed clean code validating standard solutions.',
       th: 'พัฒนาประสิทธิภาพของทีมอย่างต่อเนื่อง ปรับปรุง API ให้ใช้งานง่าย สร้างโซลูชันที่เชื่อถือได้ด้วยโค้ดที่สะอาดตามมาตรฐาน',
     },
+
   },
 
   // ─── Projects ───

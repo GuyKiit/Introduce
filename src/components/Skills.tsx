@@ -43,7 +43,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-24 border-t border-gray-200 dark:border-white/5">
       {/* Section Header */}
-      <div className="mb-12">
+      <div className="mb-12 max-w-2xl">
         <h2 className="text-3xl font-bold mb-3">{t(sk.title, lang)}</h2>
         <p className="text-gray-500 dark:text-gray-400">{t(sk.subtitle, lang)}</p>
       </div>
@@ -53,12 +53,12 @@ const Skills = () => {
         {mainSkills.map((skill, index) => (
           <div
             key={index}
-            className="relative p-6 rounded-xl glass transition-all duration-300 hover:-translate-y-2 cursor-default border border-transparent dark:border-white/5 hover:border-gray-300 dark:hover:border-[#4f3cdc]/50 flex flex-col overflow-hidden group"
+            className="relative p-6 rounded-lg glass transition-all duration-300 hover:-translate-y-1 cursor-default border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-[#4f3cdc]/50 flex flex-col overflow-hidden group"
           >
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#816bf8]/0 via-transparent to-[#25187e]/0 group-hover:from-[#816bf8]/10 group-hover:to-[#25187e]/10 transition-all duration-500 pointer-events-none" />
 
-            <div className="relative w-12 h-12 rounded-lg bg-white dark:bg-[#1a1a1a] flex items-center justify-center mb-6 border border-gray-200 dark:border-white/10">
+            <div className="relative w-12 h-12 rounded-lg bg-white dark:bg-[#1a1a1a] flex items-center justify-center mb-6 border border-gray-200 dark:border-white/10 shadow-sm">
               {skill.icon}
             </div>
             <h3 className="relative text-xl font-semibold mb-3">{skill.title}</h3>
@@ -80,7 +80,7 @@ const Skills = () => {
       </div>
 
       {/* AI Featured Card */}
-      <div className="relative p-6 rounded-xl glass border border-[#4f3cdc]/30 hover:border-[#4f3cdc]/60 transition-all duration-300 hover:-translate-y-1 cursor-default overflow-hidden group">
+      <div className="relative p-6 rounded-lg glass border border-[#4f3cdc]/30 hover:border-[#4f3cdc]/60 transition-all duration-300 hover:-translate-y-1 cursor-default overflow-hidden group">
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#816bf8]/5 via-transparent to-[#25187e]/5 group-hover:from-[#816bf8]/10 group-hover:to-[#25187e]/10 transition-all duration-500 pointer-events-none" />
 

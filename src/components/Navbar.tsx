@@ -49,6 +49,7 @@ const Navbar = () => {
             <div className="ml-10 flex items-center space-x-8">
               <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">{t(nav.about, lang)}</a>
               <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">{t(nav.skills, lang)}</a>
+              <a href="#education" onClick={(e) => handleNavClick(e, 'education')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">{t(nav.education, lang)}</a>
               <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">{t(nav.experience, lang)}</a>
               <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-medium">{t(nav.projects, lang)}</a>
 
@@ -70,9 +71,6 @@ const Navbar = () => {
                 title="Toggle Dark Mode"
               >
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-              <button className="bg-[#4f3cdc] hover:bg-[#5a4fcf] text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-[0_0_15px_rgba(79,60,220,0.3)]">
-                {t(nav.connect, lang)}
               </button>
             </div>
           </div>
@@ -108,6 +106,7 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">{t(nav.about, lang)}</a>
             <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">{t(nav.skills, lang)}</a>
+            <a href="#education" onClick={(e) => handleNavClick(e, 'education')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">{t(nav.education, lang)}</a>
             <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">{t(nav.experience, lang)}</a>
             <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium">{t(nav.projects, lang)}</a>
           </div>

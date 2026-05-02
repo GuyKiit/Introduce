@@ -1,3 +1,4 @@
+import { CheckCircle2 } from 'lucide-react';
 import { useLang } from '../i18n/LanguageContext';
 import { translations, t } from '../i18n/translations';
 
@@ -5,33 +6,47 @@ const Experience = () => {
   const { lang } = useLang();
   const exp = translations.experience;
 
+
   return (
     <section id="experience" className="py-24 border-t border-gray-200 dark:border-white/5">
-      <div className="flex flex-col md:flex-row gap-12">
-        <h2 className="text-3xl font-bold md:w-1/4">{t(exp.title, lang)}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-[240px_minmax(0,1fr)] gap-10 lg:gap-12">
+        <div className="pt-6 md:pt-8">
+          <h2 className="text-3xl font-bold">{t(exp.title, lang)}</h2>
+        </div>
 
-        <div className="md:w-3/4 relative border-l border-gray-200 dark:border-white/10 pl-8 pb-8">
-          <div className="absolute w-3 h-3 bg-[#5a4fcf] rounded-full -left-[6.5px] top-2 shadow-[0_0_10px_#5a4fcf]"></div>
+        <div className="relative rounded-lg border border-transparent bg-transparent p-6 dark:border-transparent dark:bg-transparent md:p-8">
+          <div className="absolute -left-[7px] top-8 hidden h-3.5 w-3.5 rounded-full bg-[#5a4fcf] shadow-[0_0_14px_#5a4fcf] md:block" />
+          <div className="hidden md:block absolute left-[-1px] top-0 h-full border-l border-gray-200 dark:border-white/10" />
 
-          <div className="mb-2 text-sm text-[#a89eff] tracking-wider font-semibold">{t(exp.duration, lang)} </div>
-          <h3 className="text-2xl font-bold mb-1">{t(exp.role, lang)}</h3>
-          <h4 className="text-lg text-gray-600 dark:text-gray-400 mb-6">บริษัท ไทยรุ่งเรือง เทคโนโลยี จำกัด</h4>
+          <div className="relative">
+            <div className="mb-3 inline-flex rounded-full border border-transparent bg-transparent px-3 py-1 text-xs font-semibold text-[#5a4fcf] dark:text-[#c4bcff]">
+              {t(exp.duration, lang)}
+            </div>
+            <h3 className="text-2xl font-bold">{t(exp.role, lang)}</h3>
+            <h4 className="mt-2 text-base text-gray-600 dark:text-gray-400">
+              {t(exp.company, lang)}
+            </h4>
 
-          <ul className="space-y-4 text-gray-700 dark:text-gray-300 mb-8 list-none pr-4 md:pr-0">
-            <li className="flex items-start">
-              <span className="mr-3 text-[#5a4fcf] mt-1">•</span>
-              <span>{t(exp.bullet1, lang)}</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3 text-[#5a4fcf] mt-1">•</span>
-              <span>{t(exp.bullet2, lang)}</span>
-            </li>
-          </ul>
+            <ul className="mt-6 space-y-4 text-gray-700 dark:text-gray-300">
+              {[exp.bullet1, exp.bullet2].map((item) => (
+                <li key={item.en} className="flex gap-3 leading-relaxed">
+                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#5a4fcf]" />
+                  <span>{t(item, lang)}</span>
+                </li>
+              ))}
+            </ul>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1 text-xs rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300">React</span>
-            <span className="px-3 py-1 text-xs rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300">.NET Core</span>
-            <span className="px-3 py-1 text-xs rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300">SQL</span>
+            <div className="mt-7 flex flex-wrap gap-2">
+
+              {['React', '.NET Core', 'SQL'].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-[#a89eff]/30 bg-[#a89eff]/5 px-3 py-1 text-xs font-medium text-[#5a4fcf] dark:text-[#c4bcff]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

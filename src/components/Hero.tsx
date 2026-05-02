@@ -1,4 +1,5 @@
 import { ArrowRight, Download, Loader2 } from 'lucide-react';
+import type React from 'react';
 import { useRef, useState } from 'react';
 import html2pdf from 'html2pdf.js';
 import CvDocument from './CvDocument';
@@ -39,21 +40,39 @@ const Hero = () => {
     }
   };
 
+  const handleViewProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.history.pushState(null, '', '#projects');
+  };
+
+
+
   return (
-    <section className="pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center flex-grow min-h-screen">
+    <section className="pt-32 pb-20 md:pt-44 md:pb-28 flex flex-col items-center flex-grow min-h-screen">
       {/* Hidden CV document — captured by html2pdf, never visible to the user */}
-      <div style={{ position: 'absolute', left: '-9999px', top: 0, pointerEvents: 'none' }}>
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: -10000,
+          width: 794,
+          height: 1123,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+        }}
+      >
         <CvDocument ref={cvRef} />
       </div>
 
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 w-full">
         <div className="flex flex-col items-start max-w-2xl">
-          <div className="inline-flex items-center px-3 py-1 rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 text-xs text-gray-600 dark:text-gray-300 mb-6 backdrop-blur-sm">
+          <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-50 dark:bg-emerald-500/10 text-xs text-emerald-700 dark:text-emerald-300 mb-6 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
             {t(hero.badge, lang)}
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.05]">
             {t(hero.headingLine1, lang)} <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#816bf8] via-[#4f3cdc] to-[#25187e]">
               {t(hero.headingLine2, lang)}
@@ -64,15 +83,13 @@ const Hero = () => {
             {t(hero.description, lang)}
           </p>
 
-          {/* <div className="flex flex-wrap items-center gap-4">
-            <button className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-6 py-3 rounded-full font-medium transition-colors flex items-center group">
-              {t(hero.viewProjects, lang)}
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+
+
+          <div className="flex flex-wrap items-center gap-4">
             <button
               onClick={handleDownloadCV}
               disabled={isExporting}
-              className="glass hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center disabled:opacity-60 disabled:cursor-not-allowed"
+              className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-6 py-3 rounded-full font-medium transition-colors flex items-center disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isExporting ? (
                 <Loader2 className="mr-2 w-4 h-4 animate-spin" />
@@ -81,15 +98,15 @@ const Hero = () => {
               )}
               {isExporting ? t(hero.generating, lang) : t(hero.downloadCV, lang)}
             </button>
-          </div> */}
+          </div>
         </div>
 
         <div className="hidden lg:block w-full max-w-md relative">
           {/* Glow */}
-          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#4f3cdc] to-purple-600 opacity-20 blur-2xl" />
+          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-[#4f3cdc] to-purple-600 opacity-20 blur-2xl" />
 
           {/* Editor Window */}
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+          <div className="relative rounded-lg overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10">
 
             {/* Title Bar */}
             <div className="flex items-center gap-2 px-4 py-3 bg-gray-100/80 dark:bg-[#1e1e1e]/90 backdrop-blur-sm border-b border-gray-200 dark:border-white/5">
