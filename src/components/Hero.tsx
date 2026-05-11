@@ -1,44 +1,11 @@
-import { ArrowRight, Download, Loader2 } from 'lucide-react';
+import { Download } from 'lucide-react';
 import type React from 'react';
-import { useRef, useState } from 'react';
-import html2pdf from 'html2pdf.js';
-import CvDocument from './CvDocument';
 import { useLang } from '../i18n/LanguageContext';
 import { translations, t } from '../i18n/translations';
 
 const Hero = () => {
-  const cvRef = useRef<HTMLDivElement>(null);
-  const [isExporting, setIsExporting] = useState(false);
   const { lang } = useLang();
   const hero = translations.hero;
-
-  const handleDownloadCV = async () => {
-    if (!cvRef.current || isExporting) return;
-    setIsExporting(true);
-    try {
-      const options = {
-        margin: 0,
-        filename: 'Kittiwin_Intanil_CV.pdf',
-        image: { type: 'jpeg' as const, quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          logging: false,
-          backgroundColor: '#ffffff',
-          // html2canvas ไม่รองรับ oklch() ที่ Tailwind v4 ใช้
-          // ลบ stylesheet ทั้งหมดออกก่อน capture (CvDocument ใช้ inline styles อยู่แล้ว)
-          onclone: (_clonedDoc: Document, element: HTMLElement) => {
-            const doc = element.ownerDocument;
-            doc.querySelectorAll('link[rel="stylesheet"], style').forEach(el => el.remove());
-          },
-        },
-        jsPDF: { unit: 'px' as const, format: [794, 1123] as [number, number], orientation: 'portrait' as const },
-      };
-      await html2pdf().set(options).from(cvRef.current).save();
-    } finally {
-      setIsExporting(false);
-    }
-  };
 
   const handleViewProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -50,21 +17,6 @@ const Hero = () => {
 
   return (
     <section className="pt-32 pb-20 md:pt-44 md:pb-28 flex flex-col items-center flex-grow min-h-screen">
-      {/* Hidden CV document — captured by html2pdf, never visible to the user */}
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: -10000,
-          width: 794,
-          height: 1123,
-          overflow: 'hidden',
-          pointerEvents: 'none',
-        }}
-      >
-        <CvDocument ref={cvRef} />
-      </div>
-
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 w-full">
         <div className="flex flex-col items-start max-w-2xl">
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-50 dark:bg-emerald-500/10 text-xs text-emerald-700 dark:text-emerald-300 mb-6 backdrop-blur-sm">
@@ -86,18 +38,14 @@ const Hero = () => {
 
 
           <div className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={handleDownloadCV}
-              disabled={isExporting}
-              className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-6 py-3 rounded-full font-medium transition-colors flex items-center disabled:opacity-60 disabled:cursor-not-allowed"
+            <a
+              href={`${import.meta.env.BASE_URL}Resume_Kittiwin_Intanil_Software_Developer.pdf`}
+              download="Resume_Kittiwin_Intanil_Software_Developer.pdf"
+              className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-6 py-3 rounded-full font-medium transition-colors flex items-center"
             >
-              {isExporting ? (
-                <Loader2 className="mr-2 w-4 h-4 animate-spin" />
-              ) : (
-                <Download className="mr-2 w-4 h-4" />
-              )}
-              {isExporting ? t(hero.generating, lang) : t(hero.downloadCV, lang)}
-            </button>
+              <Download className="mr-2 w-4 h-4" />
+              {t(hero.downloadCV, lang)}
+            </a>
           </div>
         </div>
 

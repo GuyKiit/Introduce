@@ -20,7 +20,7 @@ export const translations = {
       th: 'สวัสดีครับ ผม Kittiwin — นักพัฒนาซอฟต์แวร์ที่ชอบสร้างสิ่งที่ใช้งานได้จริง ตั้งแต่หน้าจอสวย ๆ ไปจนถึง Logic ฝั่งหลังบ้าน',
     },
     viewProjects: { en: 'View Projects', th: 'ดูผลงาน' },
-    downloadCV: { en: 'Download CV', th: 'ดาวน์โหลด CV' },
+    downloadCV: { en: 'Download Resume', th: 'ดาวน์โหลดเรซูเม่' },
     generating: { en: 'Generating…', th: 'กำลังสร้าง…' },
 
   },
@@ -39,13 +39,13 @@ export const translations = {
 
     detail2: {
       label: { en: 'Working style', th: 'สไตล์การทำงาน' },
-      value: { en: 'Learn fast, document clearly, improve iteratively', th: 'เรียนรู้ไว จดรายละเอียดชัด ปรับปรุงเป็นรอบ ๆ' },
+      value: { en: 'A proactive and resilient developer with a strong commitment to continuous learning and collaborative success.', th: 'นักพัฒนาที่มีความกระตือรือร้นและอดทน มุ่งมั่นที่จะเรียนรู้ตลอดเวลาและสร้างความสำเร็จร่วมกับทีม' },
     },
   },
 
   // ─── Skills ───
   skills: {
-    title: { en: 'What I Work With', th: 'สิ่งที่ผมใช้ทำงาน' },
+    title: { en: 'Skills', th: 'ทักษะ' },
     subtitle: {
       en: 'The stack and tools I reach for when building things.',
       th: 'เครื่องมือและ Stack ที่ผมเลือกใช้เวลาสร้างงาน',
